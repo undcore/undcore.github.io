@@ -13,6 +13,7 @@ Desktop.ini
 # Local tooling and agent metadata
 .agents/
 .codex/
+.claude/
 
 # Dependencies and generated output
 node_modules/
