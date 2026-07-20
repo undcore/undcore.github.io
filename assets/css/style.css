@@ -397,49 +397,9 @@ footer {
   min-height: 0; /* 모바일에서는 높이 정렬 해제 */
   margin-bottom: 0.7rem;
 }
-.home-directory {
-  padding-top: 4rem;
-  border-top: 1px solid var(--line);
-}
-.home-directory > a {
-  display: grid;
-  grid-template-columns: 60px 1fr 1fr auto;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.8rem 0;
-  border-top: 1px solid var(--line);
-}
-.home-directory > a:last-child {
-  border-bottom: 1px solid var(--line);
-}
-.home-directory span {
-  color: var(--muted);
-  font-size: 0.72rem;
-}
-.home-directory h2 {
-  margin: 0;
-  font-size: clamp(1.5rem, 3vw, 2.3rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-}
-.home-directory p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-.home-directory strong {
-  font-size: 0.8rem;
-  font-weight: 500;
-}
 @media (max-width: 720px) {
   .page-section {
     min-height: calc(100svh - 127px);
-  }
-  .home-directory > a {
-    grid-template-columns: 36px 1fr auto;
-  }
-  .home-directory > a p {
-    display: none;
   }
   .page-intro {
     margin-top: -1rem;
