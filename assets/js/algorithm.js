@@ -24,11 +24,35 @@
       { cls: 'num', src: '\\b\\d+(?:\\.\\d+)?\\b' },
       { cls: 'fn', src: '[A-Za-z_]\\w*(?=\\()' }
     ],
+    c: [
+      { cls: 'com', src: '\\/\\/[^\\n]*' },
+      { cls: 'str', src: '"(?:[^"\\\\]|\\\\.)*"' },
+      { cls: 'kw', src: '\\b(?:void|int|char|long|return|if|else|while|for|const|break|continue|sizeof|typedef|struct|static|unsigned)\\b' },
+      { cls: 'type', src: '\\b(?:size_t)\\b' },
+      { cls: 'num', src: '\\b\\d+(?:\\.\\d+)?\\b' },
+      { cls: 'fn', src: '[A-Za-z_]\\w*(?=\\()' }
+    ],
+    csharp: [
+      { cls: 'com', src: '\\/\\/[^\\n]*' },
+      { cls: 'str', src: '"(?:[^"\\\\]|\\\\.)*"' },
+      { cls: 'kw', src: '\\b(?:void|int|bool|return|if|else|while|for|foreach|in|var|break|continue|static|public|private|new|true|false|null)\\b' },
+      { cls: 'type', src: '\\b(?:List|Queue|Dictionary|Array|Math|Console|String|Enumerable|Grid)\\b' },
+      { cls: 'num', src: '\\b\\d+(?:\\.\\d+)?\\b' },
+      { cls: 'fn', src: '[A-Za-z_]\\w*(?=\\()' }
+    ],
     python: [
       { cls: 'com', src: '#[^\\n]*' },
       { cls: 'str', src: "'(?:[^'\\\\]|\\\\.)*'|\"(?:[^\"\\\\]|\\\\.)*\"" },
       { cls: 'kw', src: '\\b(?:def|return|if|elif|else|while|for|in|not|and|or|import|from|break|continue|pass|None|True|False)\\b' },
       { cls: 'type', src: '\\b(?:list|dict|set|tuple|int|str|deque)\\b' },
+      { cls: 'num', src: '\\b\\d+(?:\\.\\d+)?\\b' },
+      { cls: 'fn', src: '[A-Za-z_]\\w*(?=\\()' }
+    ],
+    java: [
+      { cls: 'com', src: '\\/\\/[^\\n]*' },
+      { cls: 'str', src: '"(?:[^"\\\\]|\\\\.)*"' },
+      { cls: 'kw', src: '\\b(?:void|int|boolean|return|if|else|while|for|break|continue|static|public|private|new|true|false|null|final)\\b' },
+      { cls: 'type', src: '\\b(?:Arrays|Collections|ArrayDeque|Queue|List|ArrayList|IntStream|String|Integer|Grid)\\b' },
       { cls: 'num', src: '\\b\\d+(?:\\.\\d+)?\\b' },
       { cls: 'fn', src: '[A-Za-z_]\\w*(?=\\()' }
     ]

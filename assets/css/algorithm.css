@@ -208,6 +208,8 @@
 
 .fg-code-tabs {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.3rem;
 }
 
 .fg-code-tabs button {
