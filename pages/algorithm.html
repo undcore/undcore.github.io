@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Algorithm | undcore</title>
+    <link rel="icon" href="../assets/img/und-favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/algorithm.css" />
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/viz/engine.js" defer></script>
+    <script src="../assets/js/viz/insertion-sort.js" defer></script>
+    <script src="../assets/js/viz/bfs-pathfinding.js" defer></script>
+    <script src="../assets/js/viz/binary-search.js" defer></script>
+    <script src="../assets/js/viz/selection-sort.js" defer></script>
+    <script src="../assets/js/viz/linear-search.js" defer></script>
+    <script src="../assets/js/viz/catalog.js" defer></script>
+    <script src="../assets/js/algorithm.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <a class="wordmark" href="../index.html">undcore<span>.</span></a
+      ><button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
+        <a href="../index.html">Home</a><a href="projects.html">Projects</a
+        ><a class="active" href="algorithm.html">Algorithm</a><a href="research.html">Research</a
+        ><a href="archive.html">Archive</a
+        ><a href="https://rungch.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="section page-section">
+        <div class="section-heading">
+          <p class="section-index">02</p>
+          <div>
+            <p class="eyebrow">Field guide</p>
+            <h1 class="page-title">Algorithm</h1>
+          </div>
+        </div>
+        <p class="page-intro">알고리즘의 동작을 눈으로 읽는 작은 도감. 각 표본은 살아 움직이는 캔버스입니다.</p>
+
+        <!-- 인덱스 뷰: 도감 목록 -->
+        <div id="fg-index">
+          <div class="fg-tabs" id="fg-tabs" role="group" aria-label="분류"></div>
+          <div class="fg-grid" id="fg-grid"></div>
+        </div>
+
+        <!-- 상세 뷰: 표본 -->
+        <div id="fg-detail" hidden>
+          <button class="fg-back" id="fg-back" type="button">← 도감 목록</button>
+          <div class="fg-detail-head">
+            <span class="fg-no" id="fg-detail-no"></span>
+            <span class="fg-cat" id="fg-detail-cat"></span>
+            <h1 id="fg-detail-title"></h1>
+            <p class="fg-ko" id="fg-detail-ko"></p>
+          </div>
+          <div class="fg-detail-main">
+            <div>
+              <div class="fg-code-head">
+                <p class="fg-code-label">Code</p>
+                <div class="fg-code-tabs" role="group" aria-label="구현 언어 선택">
+                  <button type="button" data-lang="cpp" class="active">C++</button>
+                  <button type="button" data-lang="python">Python</button>
+                </div>
+              </div>
+              <pre class="fg-code"><code id="fg-detail-code"></code></pre>
+            </div>
+            <div class="fg-stage">
+              <div class="fg-stage-canvas"><canvas id="fg-detail-canvas"></canvas></div>
+              <div class="fg-controls">
+                <button id="fg-play" type="button">⏸ 일시정지</button>
+                <button id="fg-restart" type="button">↺ 다시</button>
+                <div class="fg-speed" role="group" aria-label="재생 속도">
+                  <button type="button" data-speed="0.5">0.5×</button>
+                  <button type="button" data-speed="1" class="active">1×</button>
+                  <button type="button" data-speed="2">2×</button>
+                </div>
+              </div>
+            </div>
+            <aside class="fg-side">
+              <p class="fg-side-label">Time complexity</p>
+              <p class="fg-bigo" id="fg-detail-bigo"></p>
+              <p class="fg-note" id="fg-detail-note"></p>
+              <div id="fg-detail-tags"></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>© <span id="year">2026</span> undcore</p>
+      <p>HTML, CSS &amp; JavaScript</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "undcore-portfolio",
+  "private": true,
+  "description": "Static portfolio site (GitHub Pages). dev script is only for local preview.",
+  "scripts": {
+    "dev": "npx --yes vite ."
+  }
+}

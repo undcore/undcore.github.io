@@ -101,9 +101,9 @@ a {
 h1 {
   max-width: 900px;
   margin: 0.8rem 0 1.8rem;
-  font-size: clamp(3.2rem, 8.2vw, 7.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.065em;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
   font-weight: 500;
 }
 .hero-copy {
@@ -122,11 +122,26 @@ h1 {
   border-bottom: 1px solid var(--ink);
   font-size: 0.9rem;
 }
+.timeline {
+  margin-top: 2.6rem;
+  max-width: 680px;
+}
+.timeline p {
+  margin: 0.3rem 0;
+  color: #464646;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.contact-line {
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
 .focus-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin: 5rem 0 0;
+  margin: 3.5rem 0 0;
   padding-top: 1.4rem;
   border-top: 1px solid var(--line);
 }
@@ -321,7 +336,8 @@ footer {
     min-height: calc(100svh - 62px);
   }
   h1 {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
+    line-height: 1.08;
   }
   .focus-list {
     grid-template-columns: 1fr;
@@ -376,9 +392,9 @@ footer {
 }
 .page-title {
   margin: 0.2rem 0 0;
-  font-size: clamp(3.2rem, 7vw, 6.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
   line-height: 1;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
   font-weight: 500;
 }
 .page-intro {
@@ -393,10 +409,6 @@ footer {
   font-weight: 500;
   letter-spacing: -0.025em;
 }
-.archive-grid h2 {
-  min-height: 0; /* 모바일에서는 높이 정렬 해제 */
-  margin-bottom: 0.7rem;
-}
 @media (max-width: 720px) {
   .page-section {
     min-height: calc(100svh - 127px);
@@ -405,6 +417,7 @@ footer {
     margin-top: -1rem;
   }
   .archive-grid h2 {
-    min-height: 0;
+    min-height: 0; /* 모바일에서는 높이 정렬 해제 */
+    margin-bottom: 0.7rem;
   }
 }
