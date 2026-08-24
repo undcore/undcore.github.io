@@ -152,6 +152,15 @@
         ctx.textBaseline = 'middle';
         ctx.fillText(String(i), x, y + 0.5);
       }
+
+      // 현재 노드 펄스 링
+      if (current !== -1) {
+        ctx.beginPath();
+        ctx.arc(px(current), py(current), r * 1.45, 0, Math.PI * 2);
+        ctx.strokeStyle = P.coral;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
     }
 
     return {

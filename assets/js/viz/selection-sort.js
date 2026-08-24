@@ -62,8 +62,27 @@
         else if (idx === minIdx) color = P.coral;
         else if (idx === j && j <= N - 1) color = P.blue;
 
+        // 현재 최솟값 막대는 전체 폭으로 강조
+        var hot = idx === minIdx && i < N - 1;
+        var bw = hot ? slot * 0.98 : barW;
+        var bx = hot ? padX + idx * slot + (slot - bw) / 2 : x;
+
         ctx.fillStyle = color;
-        ctx.fillRect(x, y, barW, bh);
+        ctx.fillRect(bx, y, bw, bh);
+      }
+
+      // 현재 최솟값 마커 (윗쪽 다이아몬드)
+      if (i < N - 1) {
+        var mx = padX + minIdx * slot + slot / 2;
+        var my = padTop * 0.4;
+        ctx.fillStyle = P.coral;
+        ctx.beginPath();
+        ctx.moveTo(mx, my - 4);
+        ctx.lineTo(mx + 4, my);
+        ctx.lineTo(mx, my + 4);
+        ctx.lineTo(mx - 4, my);
+        ctx.closePath();
+        ctx.fill();
       }
     }
 

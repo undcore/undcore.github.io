@@ -56,8 +56,13 @@
         else if (idx < lo || idx > hi) color = P.line;
         else color = P.sage;
 
+        // 현재 mid / 찾은 막대는 전체 폭으로 강조
+        var hot = idx === found || (idx === mid && found === -1);
+        var bw = hot ? slot * 0.98 : barW;
+        var bx = hot ? padX + idx * slot + (slot - bw) / 2 : x;
+
         ctx.fillStyle = color;
-        ctx.fillRect(x, y, barW, bh);
+        ctx.fillRect(bx, y, bw, bh);
       }
 
       // 목표 값 마커 (윗쪽 다이아몬드)

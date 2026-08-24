@@ -65,8 +65,13 @@
         if (key !== null && idx === j + 1) color = P.coral;
         if (i >= N) color = P.sage;
 
+        // 활성 막대는 전체 폭으로 그려 변화가 또렷하게 보이게
+        var hot = key !== null && idx === j + 1;
+        var bw = hot ? slot * 0.98 : barW;
+        var bx = hot ? padX + idx * slot + (slot - bw) / 2 : x;
+
         ctx.fillStyle = color;
-        ctx.fillRect(x, y, barW, bh);
+        ctx.fillRect(bx, y, bw, bh);
       }
 
       // 키 값 표시 마커 (삽입 위치 위쪽 작은 다이아몬드)

@@ -10,6 +10,7 @@
   var detailView = document.getElementById('fg-detail');
   var miniControllers = [];
   var detailController = null;
+  var extraControllers = [];
   var currentEntry = null;
   var currentLang = 'cpp';
 
@@ -221,6 +222,22 @@
     var canvas = document.getElementById('fg-detail-canvas');
     detailController = VizEngine.mount(canvas, entry.id);
     syncPlayButton();
+
+    // 보조 캔버스 (extras)
+    var extrasBox = document.getElementById('fg-extras');
+    extrasBox.innerHTML = '';
+    extraControllers = [];
+    (entry.extras || []).forEach(function (extra) {
+      var card = document.createElement('div');
+      card.className = 'fg-extra';
+      card.innerHTML =
+        '<p class="fg-extra-title">' + extra.title + '</p>' +
+        '<div class="fg-extra-canvas"><canvas></canvas></div>' +
+        '<p class="fg-extra-cap">' + extra.caption + '</p>';
+      extrasBox.appendChild(card);
+      var ctrl = VizEngine.mount(card.querySelector('canvas'), extra.module);
+      if (ctrl) extraControllers.push(ctrl);
+    });
   }
 
   function closeDetail() {
@@ -228,6 +245,10 @@
       detailController.destroy();
       detailController = null;
     }
+    extraControllers.forEach(function (ctrl) {
+      ctrl.destroy();
+    });
+    extraControllers = [];
     detailView.hidden = true;
     indexView.hidden = false;
   }

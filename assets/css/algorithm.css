@@ -375,6 +375,52 @@
   margin: 0 0 0.6rem;
 }
 
+/* ---------- 보조 캔버스 (extras) ---------- */
+
+.fg-extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+}
+
+.fg-extras:empty {
+  display: none;
+}
+
+.fg-extra {
+  border: 1px solid var(--line);
+  background: var(--fg-card);
+}
+
+.fg-extra-title {
+  margin: 0;
+  padding: 0.8rem 1rem 0.6rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.fg-extra-canvas {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.fg-extra-canvas canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.fg-extra-cap {
+  margin: 0;
+  padding: 0.7rem 1rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* ---------- 반응형 ---------- */
 
 @media (max-width: 960px) {

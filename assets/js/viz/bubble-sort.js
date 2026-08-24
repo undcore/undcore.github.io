@@ -60,8 +60,25 @@
         else if (idx === j) color = P.blue;
         else if (idx === j + 1) color = P.coral;
 
+        // 비교 중인 오른쪽 막대는 전체 폭으로 강조
+        var hot = idx === j + 1 && end > 0;
+        var bw = hot ? slot * 0.98 : barW;
+        var bx = hot ? padX + idx * slot + (slot - bw) / 2 : x;
+
         ctx.fillStyle = color;
-        ctx.fillRect(x, y, barW, bh);
+        ctx.fillRect(bx, y, bw, bh);
+      }
+
+      // 비교 쌍 마커 (윗쪽 점 두 개)
+      if (end > 0) {
+        ctx.fillStyle = P.coral;
+        var m1 = padX + j * slot + slot / 2;
+        var m2 = padX + (j + 1) * slot + slot / 2;
+        var my = padTop * 0.4;
+        ctx.beginPath();
+        ctx.arc(m1, my, 2.5, 0, Math.PI * 2);
+        ctx.arc(m2, my, 2.5, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 

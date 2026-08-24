@@ -15,6 +15,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(n²)',
     note: '정렬된 앞부분에 새 원소를 하나씩 끼워 넣는다',
     tags: ['Stable', 'In-place'],
+    extras: [
+      {
+        module: 'insertion-sort-cases',
+        title: '입력 상태에 따른 비교 횟수',
+        caption: '거의 정렬된 입력에서는 O(n)에 가깝게 끝나지만 역순 입력은 O(n²). 삽입 정렬이 적응형(adaptive)인 이유.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -151,6 +158,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(V + E)',
     note: '시작점에서 물결처럼 퍼지며 탐색해 최단 경로를 찾는다',
     tags: ['Shortest path', 'Unweighted'],
+    extras: [
+      {
+        module: 'bfs-vs-dfs',
+        title: '같은 미로, 다른 순서',
+        caption: 'BFS는 넓게 퍼지고 DFS는 깊게 파고든다. 둘 다 모든 칸을 방문하지만 방문 순서가 다르다.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -375,6 +389,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(log n)',
     note: '정렬된 배열에서 탐색 범위를 매번 절반으로 줄인다',
     tags: ['Sorted input', 'Halving'],
+    extras: [
+      {
+        module: 'binary-vs-linear',
+        title: '선형 탐색과의 비교 횟수',
+        caption: '같은 목표를 찾는 데 선형은 최대 n번, 이진은 최대 log n번. 정렬되어 있다는 전제가 값을 한다.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -493,6 +514,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(n²)',
     note: '남은 구간에서 최솟값을 골라 앞으로 보낸다',
     tags: ['In-place', 'Unstable'],
+    extras: [
+      {
+        module: 'selection-sort-swaps',
+        title: '버블 정렬과의 교환 횟수 비교',
+        caption: '같은 입력에서 선택 정렬의 교환은 최대 n-1번. 쓰기 비용이 큰 환경(플래시 메모리 등)에서 선택 정렬이 쓰이는 이유.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -607,6 +635,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(n)',
     note: '처음부터 끝까지 하나씩 순서대로 비교한다',
     tags: ['Unsorted OK', 'Sequential'],
+    extras: [
+      {
+        module: 'linear-search-cases',
+        title: '목표 위치에 따른 비교 횟수',
+        caption: '맨 앞이면 1번, 맨 끝이면 n번. 평균적으로는 절반을 훑는다.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -698,6 +733,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(n²)',
     note: '인접한 두 원소를 비교·교환하며 큰 값을 뒤로 띄운다',
     tags: ['Stable', 'In-place'],
+    extras: [
+      {
+        module: 'bubble-sort-early-exit',
+        title: '조기 종료의 효과',
+        caption: '거의 정렬된 입력에서 한 패스에 교환이 없으면 바로 종료. 최선의 경우 O(n)이 되는 이유.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리 ──',
@@ -829,6 +871,13 @@ window.VIZ_CATALOG = [
     complexity: 'O(V + E)',
     note: '갈 수 있는 곳까지 깊이 내려간 뒤 되돌아오며 탐색한다',
     tags: ['Stack', 'Backtracking'],
+    extras: [
+      {
+        module: 'dfs-stack',
+        title: '스택이 기억하는 되돌아갈 길',
+        caption: '갈림길을 스택에 쌓고, 막다른 길에서 꺼내며 되돌아온다. 재귀는 이 스택을 호출 스택으로 대신한 것.'
+      }
+    ],
     code: {
       cpp: [
         '// ── 표준 라이브러리: std::stack (반복) ──',
@@ -947,6 +996,148 @@ window.VIZ_CATALOG = [
         '  for (int next : g.neighbors(v)) {',
         '    if (!visited[next]) dfs(g, next, visited);',
         '  }',
+        '}'
+      ]
+    }
+  },
+  {
+    id: 'merge-sort',
+    no: '008',
+    title: 'Merge Sort',
+    ko: '병합 정렬',
+    category: 'Sorting',
+    color: '#a8b87f',
+    complexity: 'O(n log n)',
+    note: '절반으로 나누고, 정렬된 두 부분을 합치며 올라온다',
+    tags: ['Stable', 'Divide & conquer'],
+    extras: [
+      {
+        module: 'merge-sort-tree',
+        title: '분할과 병합의 트리',
+        caption: '8개 원소 기준. 위로 내려가며 절반씩 나누고(분할), 아래에서 위로 합쳐진다(병합). 트리의 높이가 log n.'
+      }
+    ],
+    code: {
+      cpp: [
+        '// ── 표준 라이브러리: std::merge ──',
+        'void mergeSort(std::vector<int>& a, int lo, int hi) {',
+        '  if (hi - lo <= 1) return;',
+        '  int mid = lo + (hi - lo) / 2;',
+        '  mergeSort(a, lo, mid);',
+        '  mergeSort(a, mid, hi);',
+        '  std::vector<int> buf(hi - lo);',
+        '  std::merge(a.begin() + lo, a.begin() + mid,',
+        '             a.begin() + mid, a.begin() + hi, buf.begin());',
+        '  std::copy(buf.begin(), buf.end(), a.begin() + lo);',
+        '}',
+        '',
+        '// ── 직접 구현: 두 포인터 병합 ──',
+        'void mergeSort(std::vector<int>& a, std::vector<int>& buf,',
+        '               int lo, int hi) {',
+        '  if (hi - lo <= 1) return;',
+        '  int mid = lo + (hi - lo) / 2;',
+        '  mergeSort(a, buf, lo, mid);',
+        '  mergeSort(a, buf, mid, hi);',
+        '  int i = lo, j = mid, k = lo;',
+        '  while (i < mid && j < hi)',
+        '    buf[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];',
+        '  while (i < mid) buf[k++] = a[i++];',
+        '  while (j < hi) buf[k++] = a[j++];',
+        '  for (k = lo; k < hi; k++) a[k] = buf[k];',
+        '}'
+      ],
+      c: [
+        '// ── 표준 라이브러리: qsort (stdlib.h) ──',
+        'int cmpAsc(const void* x, const void* y) {',
+        '  return *(const int*)x - *(const int*)y;',
+        '}',
+        '',
+        'void mergeSort(int a[], int n) {',
+        '  qsort(a, n, sizeof(int), cmpAsc); // 실무에서는 내장 정렬',
+        '}',
+        '',
+        '// ── 직접 구현: 두 포인터 병합 ──',
+        'void mergeSort(int a[], int buf[], int lo, int hi) {',
+        '  if (hi - lo <= 1) return;',
+        '  int mid = lo + (hi - lo) / 2;',
+        '  mergeSort(a, buf, lo, mid);',
+        '  mergeSort(a, buf, mid, hi);',
+        '  int i = lo, j = mid, k = lo;',
+        '  while (i < mid && j < hi)',
+        '    buf[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];',
+        '  while (i < mid) buf[k++] = a[i++];',
+        '  while (j < hi) buf[k++] = a[j++];',
+        '  for (k = lo; k < hi; k++) a[k] = buf[k];',
+        '}'
+      ],
+      csharp: [
+        '// ── 표준 라이브러리: Array.Sort (Introsort) ──',
+        'void MergeSort(int[] a) {',
+        '  Array.Sort(a); // 실무에서는 내장 정렬',
+        '}',
+        '',
+        '// ── 직접 구현: 두 포인터 병합 ──',
+        'void MergeSort(int[] a, int[] buf, int lo, int hi) {',
+        '  if (hi - lo <= 1) return;',
+        '  int mid = lo + (hi - lo) / 2;',
+        '  MergeSort(a, buf, lo, mid);',
+        '  MergeSort(a, buf, mid, hi);',
+        '  int i = lo, j = mid, k = lo;',
+        '  while (i < mid && j < hi)',
+        '    buf[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];',
+        '  while (i < mid) buf[k++] = a[i++];',
+        '  while (j < hi) buf[k++] = a[j++];',
+        '  for (k = lo; k < hi; k++) a[k] = buf[k];',
+        '}'
+      ],
+      python: [
+        '# ── 표준 라이브러리: heapq.merge ──',
+        'import heapq',
+        '',
+        'def merge_sort(a):',
+        '    if len(a) <= 1:',
+        '        return a',
+        '    mid = len(a) // 2',
+        '    left = merge_sort(a[:mid])',
+        '    right = merge_sort(a[mid:])',
+        '    return list(heapq.merge(left, right))',
+        '',
+        '# ── 직접 구현: 두 포인터 병합 ──',
+        'def merge_sort(a):',
+        '    if len(a) <= 1:',
+        '        return a',
+        '    mid = len(a) // 2',
+        '    left = merge_sort(a[:mid])',
+        '    right = merge_sort(a[mid:])',
+        '    merged = []',
+        '    i = j = 0',
+        '    while i < len(left) and j < len(right):',
+        '        if left[i] <= right[j]:',
+        '            merged.append(left[i])',
+        '            i += 1',
+        '        else:',
+        '            merged.append(right[j])',
+        '            j += 1',
+        '    return merged + left[i:] + right[j:]'
+      ],
+      java: [
+        '// ── 표준 라이브러리: Arrays.sort (Dual-Pivot Quicksort) ──',
+        'void mergeSort(int[] a) {',
+        '  Arrays.sort(a); // 실무에서는 내장 정렬',
+        '}',
+        '',
+        '// ── 직접 구현: 두 포인터 병합 ──',
+        'void mergeSort(int[] a, int[] buf, int lo, int hi) {',
+        '  if (hi - lo <= 1) return;',
+        '  int mid = lo + (hi - lo) / 2;',
+        '  mergeSort(a, buf, lo, mid);',
+        '  mergeSort(a, buf, mid, hi);',
+        '  int i = lo, j = mid, k = lo;',
+        '  while (i < mid && j < hi)',
+        '    buf[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];',
+        '  while (i < mid) buf[k++] = a[i++];',
+        '  while (j < hi) buf[k++] = a[j++];',
+        '  for (k = lo; k < hi; k++) a[k] = buf[k];',
         '}'
       ]
     }

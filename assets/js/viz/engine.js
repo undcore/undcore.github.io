@@ -12,10 +12,10 @@
     ink: '#171717',
     muted: '#717171',
     line: '#deded9',
-    sage: '#8fb8a0',
-    blue: '#a9bcd0',
+    sage: '#79ac90',
+    blue: '#7da2c9',
     amber: '#e3c88f',
-    coral: '#dfa392',
+    coral: '#e07a52',
     neutral: '#c9c9c2'
   };
 
@@ -34,7 +34,8 @@
     var mod = factory(Palette);
     var ctx = canvas.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var speed = (options.speed || 1) * 0.5; // 1× 체감 속도를 절반으로 낮춘 기본 배속
+    var BASE_SPEED = 0.25; // 1× 버튼의 실제 배속 (요청으로 두 차례 하향)
+    var speed = (options.speed || 1) * BASE_SPEED;
     var playing = false;
     var visible = false;
     var destroyed = false;
@@ -129,7 +130,7 @@
         mod.draw(ctx, canvas.width, canvas.height);
       },
       setSpeed: function (s) {
-        speed = s * 0.5;
+        speed = s * BASE_SPEED;
       },
       isPlaying: function () {
         return playing;

@@ -20,6 +20,7 @@
     var phase; // 'search' | 'path'
     var path;
     var pathIndex;
+    var lastCell; // 가장 최근에 처리된 칸 (변화 강조용)
 
     function idx(x, y) {
       return y * COLS + x;
@@ -80,6 +81,7 @@
       phase = 'search';
       path = [];
       pathIndex = 0;
+      lastCell = -1;
     }
 
     function step() {
@@ -102,6 +104,7 @@
           var cur = queue[qHead++];
           if (state[cur] === 2) continue;
           state[cur] = 2;
+          lastCell = cur;
           if (cur === goal) {
             qHead = queue.length;
             break;
@@ -153,6 +156,17 @@
             ctx.strokeRect(px + 0.5, py + 0.5, size - 1, size - 1);
           }
         }
+      }
+
+      // 가장 최근에 처리된 칸에 밝은 점 (변화 추적용)
+      var hot = phase === 'search' ? lastCell : pathIndex > 0 ? path[pathIndex - 1] : -1;
+      if (hot !== -1 && hot !== undefined && !walls[hot]) {
+        var hx = ox + (hot % COLS) * cell + cell / 2;
+        var hy = oy + Math.floor(hot / COLS) * cell + cell / 2;
+        ctx.fillStyle = P.paper;
+        ctx.beginPath();
+        ctx.arc(hx, hy, Math.max(1.5, size * 0.2), 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
