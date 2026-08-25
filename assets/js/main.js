@@ -3,8 +3,6 @@ const NAV_ITEMS = [
   { label: 'Home', href: 'index.html' },
   { label: 'Projects', href: 'pages/projects.html' },
   { label: 'Algorithm', href: 'pages/algorithm.html' },
-  { label: 'Research', href: 'pages/research.html' },
-  { label: 'Archive', href: 'pages/archive.html' },
   { label: 'GitHub ↗', href: 'https://github.com/undcore', external: true },
   { label: 'Blog ↗', href: 'https://rungch.tistory.com', external: true },
 ];
@@ -42,4 +40,7 @@ navigationLinks.forEach(function (navigationLink) {
   });
 });
 
-document.querySelector('#year').textContent = String(new Date().getFullYear());
+const yearElement = document.querySelector('#year');
+if (yearElement) {
+  yearElement.textContent = String(new Date().getFullYear());
+}
