@@ -151,6 +151,16 @@
     filter('all');
   }
 
+  function complexityText(entry) {
+    if (entry.best && entry.worst) {
+      if (entry.best === entry.worst) {
+        return '최적·최악 ' + entry.best;
+      }
+      return '최적 ' + entry.best + ' · 최악 ' + entry.worst;
+    }
+    return entry.complexity;
+  }
+
   function buildCards() {
     VIZ_CATALOG.forEach(function (entry) {
       var card = document.createElement('article');
@@ -167,7 +177,7 @@
         '<div class="fg-card-body">' +
         '<h2>' + entry.title + '</h2>' +
         '<p class="fg-ko">' + entry.ko + '</p>' +
-        '<span class="fg-badge" style="color:' + entry.color + ';border-color:' + entry.color + '">' + entry.complexity + '</span>' +
+        '<span class="fg-badge" style="color:' + entry.color + ';border-color:' + entry.color + '">' + complexityText(entry) + '</span>' +
         '</div>';
 
       function open() {
@@ -198,7 +208,7 @@
     document.getElementById('fg-detail-ko').textContent = entry.ko;
 
     var badge = document.getElementById('fg-detail-bigo');
-    badge.textContent = entry.complexity;
+    badge.textContent = complexityText(entry);
     badge.style.color = entry.color;
 
     document.getElementById('fg-detail-note').textContent = entry.note;

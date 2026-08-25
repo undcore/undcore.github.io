@@ -434,7 +434,54 @@
 }
 
 @media (max-width: 560px) {
+  /* 탭 — 인스타 필터 칩처럼 가로 스크롤 */
+  .fg-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 1.6rem -1.25rem 0;
+    padding: 0 1.25rem 0.4rem;
+    scrollbar-width: none;
+  }
+
+  .fg-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fg-tabs button {
+    flex: 0 0 auto;
+  }
+
+  /* 피드 — 인스타처럼 화면 전체 폭의 세로 피드 */
   .fg-grid {
     grid-template-columns: 1fr;
+    gap: 2.8rem;
+    margin: 1.6rem -1.25rem 0;
+  }
+
+  .fg-card {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .fg-card:hover,
+  .fg-card:focus-visible {
+    transform: none;
+  }
+
+  .fg-card-canvas canvas {
+    aspect-ratio: 1 / 1;
+  }
+
+  .fg-card-head {
+    padding: 0.7rem 1.25rem 0.6rem;
+  }
+
+  .fg-card-body {
+    padding: 0.9rem 1.25rem 1.1rem;
+  }
+
+  /* 상세 — 정사각에 가깝게 키워 조작 공간 확보 */
+  .fg-stage-canvas canvas {
+    aspect-ratio: 4 / 3;
   }
 }
