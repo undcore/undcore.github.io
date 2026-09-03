@@ -103,14 +103,15 @@
     resize();
 
     if (reduceMotionQuery.matches) {
+      // 자동재생만 막는다 — 루프는 띄워 둬서 사용자가 직접 재생을 누르면 동작하게 한다
       for (var i = 0; i < 12; i++) {
         if (mod.step()) break;
       }
       mod.draw(ctx, canvas.width, canvas.height);
     } else {
       playing = true;
-      rafId = requestAnimationFrame(frame);
     }
+    rafId = requestAnimationFrame(frame);
 
     return {
       play: function () {
