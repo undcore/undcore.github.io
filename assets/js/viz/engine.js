@@ -102,8 +102,9 @@
     mod.reset();
     resize();
 
-    if (reduceMotionQuery.matches) {
+    if (reduceMotionQuery.matches && !options.forceAutoplay) {
       // 자동재생만 막는다 — 루프는 띄워 둬서 사용자가 직접 재생을 누르면 동작하게 한다
+      // (재생 컨트롤이 없는 캔버스는 options.forceAutoplay로 이 분기를 건너뛴다)
       for (var i = 0; i < 12; i++) {
         if (mod.step()) break;
       }

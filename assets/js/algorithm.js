@@ -193,7 +193,7 @@
 
       grid.appendChild(card);
       cardRefs.push({ el: card, category: entry.category });
-      var ctrl = VizEngine.mount(card.querySelector('canvas'), entry.id);
+      var ctrl = VizEngine.mount(card.querySelector('canvas'), entry.id, { forceAutoplay: true });
       if (ctrl) miniControllers.push(ctrl);
     });
   }
@@ -245,7 +245,7 @@
         '<div class="fg-extra-canvas"><canvas></canvas></div>' +
         '<p class="fg-extra-cap">' + extra.caption + '</p>';
       extrasBox.appendChild(card);
-      var ctrl = VizEngine.mount(card.querySelector('canvas'), extra.module);
+      var ctrl = VizEngine.mount(card.querySelector('canvas'), extra.module, { forceAutoplay: true });
       if (ctrl) extraControllers.push(ctrl);
     });
   }
